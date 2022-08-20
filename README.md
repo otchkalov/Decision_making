@@ -1,2 +1,3 @@
-# optimization
-Algorithms of Optimization
+# Decision making
+Numerical experiments on decision making theory
+

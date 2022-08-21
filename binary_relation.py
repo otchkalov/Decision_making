@@ -1,5 +1,8 @@
 # Binary reflection
 
+import json
+
+
 class BinRef:
     # constructor
     def __init__(self, ref_mat):
@@ -40,6 +43,12 @@ class BinRef:
                     return False
         return True
 
+    def is_asymmetric(self):
+        if BinRef.is_antisymmetric(self) and BinRef.is_irreflexive(self):
+            return True
+        else:
+            return False
+
     def is_transitive(self):
         for arg in range(self.dim_of_set):
             relation_1 = BinRef.func(self, arg)
@@ -54,59 +63,41 @@ class BinRef:
 # --------------------------------------------------------------------------------
 
 
-rel_mat1 = [[0, 1, 1, 1, 1],
-            [1, 0, 1, 1, 1],
-            [1, 1, 0, 1, 1],
-            [1, 1, 1, 0, 1],
-            [1, 1, 1, 1, 0]
-            ]
-
-rel_mat2 = [[1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1]
-            ]
-
+variant = "var2"
+with open('tasks.json', 'r') as f:
+    data = json.load(f)
+rel_mat1 = data[variant]
 ref_1 = BinRef(rel_mat1)
-ref_2 = BinRef(rel_mat2)
+
+print(variant)
+for i in range(len(rel_mat1)):
+    print(rel_mat1[i])
 
 if ref_1.is_reflexive():
     print("The relation is reflexive")
-elif ref_1.is_irreflexive():
+else:
+    print("The relation is NOT reflexive")
+if ref_1.is_irreflexive():
     print("The relation is irreflexive")
 else:
-    print("The relation is not reflective neither irreflexive")
+    print("The relation is NOT irreflexive")
 
 if ref_1.is_symmetric():
     print("The relation is symmetric")
-elif ref_1.is_antisymmetric():
+else:
+    print("The relation is NOT symmetric")
+if ref_1.is_antisymmetric():
     print("The relation is antisymmetric")
 else:
+    print("The relation is NOT antisymmetric")
+if ref_1.is_asymmetric():
     print("The relation is asymmetric")
+else:
+    print("The relation is NOT asymmetric")
 
 if ref_1.is_transitive():
     print("The relation is transitive")
 else:
-    print("The relation is not transitive")
+    print("The relation is NOT transitive")
 
 print("____________________")
-
-if ref_2.is_reflexive():
-    print("The relation is reflexive")
-elif ref_2.is_irreflexive():
-    print("The relation is irreflexive")
-else:
-    print("The relation is not reflective neither irreflexive")
-
-if ref_2.is_symmetric():
-    print("The relation is symmetric")
-elif ref_2.is_antisymmetric():
-    print("The relation is antisymmetric")
-else:
-    print("The relation is asymmetric")
-
-if ref_2.is_transitive():
-    print("The relation is transitive")
-else:
-    print("The relation is not transitive")

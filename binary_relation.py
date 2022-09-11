@@ -63,8 +63,8 @@ class BinRef:
 # --------------------------------------------------------------------------------
 
 
-variant = "var2"
-with open('tasks.json', 'r') as f:
+variant = "var5"
+with open('tasks_1.json', 'r') as f:
     data = json.load(f)
 rel_mat1 = data[variant]
 ref_1 = BinRef(rel_mat1)

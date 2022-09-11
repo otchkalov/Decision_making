@@ -71,7 +71,7 @@ def savage_crit(dec_matrix):
 
 
 # ---------------------------------------------------------------------------------------
-variant = "var1"
+variant = 'var1'
 with open('tasks_2.json', 'r') as f:
     data = json.load(f)
 decision_matrix = data[variant]
